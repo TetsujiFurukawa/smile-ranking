@@ -1,5 +1,5 @@
 -- Project Name : smile-ranking
--- Date/Time    : 2019/11/30 3:06:29
+-- Date/Time    : 2019/11/30 13:58:58
 -- Author       : tetsuji
 -- RDBMS Type   : PostgreSQL
 -- Application  : A5:SQL Mk-2
@@ -15,9 +15,9 @@
 create table FACE (
   FACE_SEQ BIGSERIAL not null
   , FACE_GENDER VARCHAR(25)
-  , FACE_AGE DECIMAL(5,2)
+  , FACE_AGE INT
   , FACE_HAPPINESS DECIMAL(5,2)
-  , FACE_SMILE INT not null
+  , FACE_SMILE DECIMAL(5,2) not null
   , FACE_IMAGE BLOB not null
   , ENTER_DATE TIMESTAMP not null
   , constraint FACE_PKC primary key (FACE_SEQ)

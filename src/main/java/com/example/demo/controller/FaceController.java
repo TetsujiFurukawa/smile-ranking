@@ -1,16 +1,15 @@
 package com.example.demo.controller;
 
-import java.util.List;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
+import org.apache.http.client.ClientProtocolException;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.dto.FaceCreateRequestDto;
-import com.example.demo.entity.dto.FaceListResponseDto;
 import com.example.demo.service.FaceService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,16 +22,17 @@ public class FaceController {
 	private final FaceService faceService;
 
 	@PostMapping("/face")
-	public void postFace(@RequestBody @Validated FaceCreateRequestDto faceCreateRequestDto) {
+	public String postFace(@Validated FaceCreateRequestDto faceCreateRequestDto)
+			throws ClientProtocolException, URISyntaxException, IOException {
 
-		faceService.insertFace(faceCreateRequestDto.getFaceImage());
-
-	}
-
-	@GetMapping("/face")
-	public List<FaceListResponseDto> getFace() {
-
-		return faceService.getFaces();
+		return faceService.insertFace(faceCreateRequestDto.getFaceImage());
 
 	}
+
+	//	@GetMapping("/face")
+	//	public String getFace() {
+	//
+	//		return faceService.getFaces();
+	//
+	//	}
 }

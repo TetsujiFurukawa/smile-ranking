@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "face.images")
+@ConfigurationProperties(prefix = "face.api")
 public class FaceApiProperties {
 
 	private String subscriptionKey;
